@@ -12,12 +12,7 @@ exports.run = async function(bot, message, args) {
       frames: 8,
       size: 256
     };
-    let user;
-    if (!message.mentions.members.first()) {
-      user = message.author;
-    } else {
-      user = message.mentions.members.first().user;
-    }
+    const user = !message.mentions.members.first() ? message.author : message.mentions.members.first().user;
     // const user = message.mentions.members.first().user || message.author;
     const avatarURL = user.displayAvatarURL;
     const base = new Jimp(options.size, options.size);
